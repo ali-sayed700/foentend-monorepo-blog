@@ -1,10 +1,10 @@
 import { BACKEND_URL } from '@/lib/constants';
 import { createSession } from '@/lib/sessions';
 import { redirect } from 'next/navigation';
-import type { NextResponse } from 'next/server';
+import type { NextRequest } from 'next/server';
 
-export async function GET(res: NextResponse | Response) {
-  const { searchParams } = new URL(res.url);
+export async function GET(req: NextRequest) {
+  const { searchParams } = new URL(req.url);
 
   const accessToken = searchParams.get('accessToken');
   const userId = searchParams.get('userId');
