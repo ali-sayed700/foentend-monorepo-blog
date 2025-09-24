@@ -19,6 +19,8 @@ const UpdatePostContainer = ({ post }: Props) => {
       previousThumbnailUrl: post.thumbnail ?? undefined,
     },
   });
+  console.log('front end ', post.id);
+
   return <UpsertPostForm state={state} formAction={action} />;
 };
 
