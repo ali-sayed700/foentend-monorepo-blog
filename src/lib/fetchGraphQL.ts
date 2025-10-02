@@ -4,7 +4,10 @@ import { getSession } from './sessions';
 export const fetchGraphQL = async (query: string, variables = {}) => {
   const response = await fetch(`${BACKEND_URL}/graphql`, {
     method: 'POST',
-    headers: { 'content-type': 'application/json' },
+    headers: {
+      'content-type': 'application/json',
+      'x-apollo-operation-name': 'MyQuery',
+    },
     body: JSON.stringify({ query, variables }),
   });
 
@@ -25,6 +28,7 @@ export const authFetchGraphQL = async (query: string, variables = {}) => {
     headers: {
       'Content-Type': 'application/json',
       Authorization: `Bearer ${session?.accessToken}`,
+      'x-apollo-operation-name': 'MyQuery',
     },
     body: JSON.stringify({
       query,
